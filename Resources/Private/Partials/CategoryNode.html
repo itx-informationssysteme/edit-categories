@@ -1,0 +1,180 @@
+<html
+	xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	data-namespace-typo3-fluid="true">
+	<f:variable name="treeIndent"
+		><f:if condition="{isRoot}"><f:then>0</f:then><f:else>24px</f:else></f:if></f:variable
+	>
+	<ul class="list-tree" style="list-style: none; margin: 0; padding-left: {treeIndent};">
+		<li>
+			<f:variable name="enableDisableTitle"
+				><f:if condition="{node.hidden}"
+					><f:then
+						><f:translate
+							key="LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:enable" /></f:then
+					><f:else
+						><f:translate
+							key="LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:disable" /></f:else></f:if
+			></f:variable>
+			<f:variable name="deleteConfirmText"
+				><f:translate
+					key="LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:deleteConfirm"
+					arguments="{0: node.title}"
+			/></f:variable>
+			<div class="recordlist" style="display: flex; align-items: center; gap: 6px; padding: 2px 0px 2px 8px">
+				<f:format.raw>{node.icon}</f:format.raw>
+				<a href="{node.editLink}" style="font-weight:bold; {f:if(condition: node.hidden, then: 'opacity:.5;')}"
+					>{node.title}</a
+				>
+				<f:if condition="{node.sys_language_uid} > 0">
+					<f:then>
+						<span title="{node.languageTitle}" style="display: inline-flex; align-items: center; gap: 4px">
+							<f:if condition="{node.languageFlagIdentifier}">
+								<core:icon identifier="{node.languageFlagIdentifier}" size="small" />
+							</f:if>
+							<span class="badge badge-info">({node.languageTitle})</span>
+						</span>
+					</f:then>
+				</f:if>
+
+				<span
+					style="display: flex; align-items: center; gap: 8px; margin-left: auto; padding-left: 8px"
+					title="{f:translate(key: 'LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:localization')}">
+					<f:for each="{node.localizeLinks}" as="localizeLink">
+						<f:variable name="localizeTitle"
+							><f:translate
+								key="LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:localizeTo"
+								arguments="{0: localizeLink.languageTitle}"
+						/></f:variable>
+						<a href="{localizeLink.link}" class="btn btn-default btn-sm" title="{localizeTitle}">
+							<f:if condition="{localizeLink.languageFlagIdentifier}">
+								<f:then><core:icon identifier="{localizeLink.languageFlagIdentifier}" size="small" /></f:then>
+								<f:else>{localizeLink.languageTitle}</f:else>
+							</f:if>
+						</a>
+					</f:for>
+				</span>
+
+				<span style="display: flex; align-items: center; gap: 8px">
+					<span style="display: flex; gap: 2px">
+						<f:if condition="{node.moveUpLink}">
+							<f:then>
+								<a
+									href="{node.moveUpLink}"
+									class="btn btn-default btn-sm"
+									title="{f:translate(key: 'LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:moveUp')}">
+									<core:icon identifier="actions-move-up" size="small" />
+								</a>
+							</f:then>
+							<f:else>
+								<span class="btn btn-default btn-sm disabled"
+									><core:icon identifier="actions-move-up" size="small"
+								/></span>
+							</f:else>
+						</f:if>
+						<f:if condition="{node.moveDownLink}">
+							<f:then>
+								<a
+									href="{node.moveDownLink}"
+									class="btn btn-default btn-sm"
+									title="{f:translate(key: 'LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:moveDown')}">
+									<core:icon identifier="actions-move-down" size="small" />
+								</a>
+							</f:then>
+							<f:else>
+								<span class="btn btn-default btn-sm disabled"
+									><core:icon identifier="actions-move-down" size="small"
+								/></span>
+							</f:else>
+						</f:if>
+					</span>
+
+					<span style="display: flex; gap: 2px">
+						<a
+							href="{node.editLink}"
+							class="btn btn-default btn-sm"
+							title="{f:translate(key: 'LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:edit')}">
+							<core:icon identifier="actions-open" size="small" />
+						</a>
+						<a
+							href="{node.newSubcategoryLink}"
+							class="btn btn-default btn-sm"
+							title="{f:translate(key: 'LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:newSubcategory')}">
+							<core:icon identifier="actions-add" size="small" />
+						</a>
+						<a href="{node.toggleHiddenLink}" class="btn btn-default btn-sm" title="{enableDisableTitle}">
+							<f:if condition="{node.hidden}">
+								<f:then><core:icon identifier="actions-edit-unhide" size="small" /></f:then>
+								<f:else><core:icon identifier="actions-edit-hide" size="small" /></f:else>
+							</f:if>
+						</a>
+						<a
+							href="{node.deleteLink}"
+							class="btn btn-default btn-sm"
+							title="{f:translate(key: 'LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:delete')}"
+							onclick="return confirm('{deleteConfirmText -> f:format.raw()}');">
+							<core:icon identifier="actions-edit-delete" size="small" />
+						</a>
+					</span>
+					<f:if condition="{node.languageFlagIdentifier}">
+						<span title="{node.languageTitle}" style="padding: 0px 12px; display: inline-flex; align-items: center">
+							<core:icon identifier="{node.languageFlagIdentifier}" size="small" />
+						</span>
+					</f:if>
+				</span>
+			</div>
+			<f:if condition="{showTranslations}">
+				<f:for each="{node.translations}" as="translation">
+					<div
+						class="recordlist"
+						style="display: flex; align-items: center; gap: 6px; padding: 2px 0px 2px 8px; opacity: 0.85">
+						<f:format.raw>{translation.icon}</f:format.raw>
+						<a href="{translation.editLink}" style="{f:if(condition: translation.hidden, then: 'opacity:.5;')}"
+							>{translation.title}</a
+						>
+						<span style="display: flex; gap: 2px; margin-left: auto">
+							<a
+								href="{translation.editLink}"
+								class="btn btn-default btn-sm"
+								title="{f:translate(key: 'LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:edit')}">
+								<core:icon identifier="actions-open" size="small" />
+							</a>
+							<a href="{translation.toggleHiddenLink}" class="btn btn-default btn-sm" title="{enableDisableTitle}">
+								<f:if condition="{translation.hidden}">
+									<f:then><core:icon identifier="actions-edit-unhide" size="small" /></f:then>
+									<f:else><core:icon identifier="actions-edit-hide" size="small" /></f:else>
+								</f:if>
+							</a>
+							<f:variable name="translationDeleteConfirmText">
+								<f:translate
+									key="LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:deleteConfirm"
+									arguments="{0: translation.title}" />
+							</f:variable>
+							<a
+								href="{translation.deleteLink}"
+								class="btn btn-default btn-sm"
+								title="{f:translate(key: 'LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:delete')}"
+								onclick="return confirm('{translationDeleteConfirmText -> f:format.raw()}');">
+								<core:icon identifier="actions-edit-delete" size="small" />
+							</a>
+						</span>
+						<span
+							style="display: flex; align-items: center; gap: 8px; padding: 6px 12px"
+							title="{translation.languageTitle}">
+							<f:if condition="{translation.languageFlagIdentifier}">
+								<core:icon identifier="{translation.languageFlagIdentifier}" size="small" />
+							</f:if>
+						</span>
+					</div>
+				</f:for>
+			</f:if>
+			<f:if condition="{node.children}">
+				<f:for each="{node.children}" as="child">
+					<f:render
+						partial="CategoryNode"
+						arguments="{node: child, isRoot: false, showTranslations: showTranslations}" />
+				</f:for>
+			</f:if>
+		</li>
+	</ul>
+</html>

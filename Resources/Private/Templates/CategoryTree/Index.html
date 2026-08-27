@@ -1,0 +1,37 @@
+<html
+	xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	data-namespace-typo3-fluid="true">
+	<f:layout name="Module" />
+
+	<f:section name="Content">
+		<div class="module" style="padding: 20px">
+			<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px">
+				<f:variable name="toggleUrl"
+					>{moduleUrl}{f:if(condition: showTranslations, then: '', else: '&showTranslations=1')}</f:variable
+				>
+				<a href="{toggleUrl}" class="btn btn-default">
+					<f:if condition="{showTranslations}">
+						<f:then
+							><f:translate
+								key="LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:hideTranslations"
+						/></f:then>
+						<f:else
+							><f:translate
+								key="LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:showTranslations"
+						/></f:else>
+					</f:if>
+				</a>
+				<a href="{newRootLink}" class="btn btn-default">
+					<core:icon identifier="actions-add" size="small" />
+					<f:translate
+						key="LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:newCategory" />
+				</a>
+			</div>
+
+			<f:for each="{tree}" as="node">
+				<f:render partial="CategoryNode" arguments="{node: node, isRoot: true, showTranslations: showTranslations}" />
+			</f:for>
+		</div>
+	</f:section>
+</html>

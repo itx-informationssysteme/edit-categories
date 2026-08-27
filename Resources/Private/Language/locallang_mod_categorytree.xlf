@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.0" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="de" datatype="plaintext" original="messages" date="2024-01-01T00:00:00Z" product-name="fatzer_site">
+        <header/>
+        <body>
+            <trans-unit id="mlang_tabs_tab" xml:space="preserve">
+                <source>Kategorien</source>
+            </trans-unit>
+            <trans-unit id="mlang_labels_tablabel" xml:space="preserve">
+                <source>Kategorien als Baum verwalten</source>
+            </trans-unit>
+            <trans-unit id="mlang_labels_tabdescr" xml:space="preserve">
+                <source>Zeigt sys_category als hierarchischen Baum an, mit optionalem Filter für Sprachvarianten.</source>
+            </trans-unit>
+            <trans-unit id="showTranslations" xml:space="preserve">
+                <source>Übersetzungen anzeigen</source>
+            </trans-unit>
+            <trans-unit id="hideTranslations" xml:space="preserve">
+                <source>Übersetzungen ausblenden</source>
+            </trans-unit>
+            <trans-unit id="newCategory" xml:space="preserve">
+                <source>Neue Kategorie</source>
+            </trans-unit>
+            <trans-unit id="edit" xml:space="preserve">
+                <source>Bearbeiten</source>
+            </trans-unit>
+            <trans-unit id="newSubcategory" xml:space="preserve">
+                <source>Unterkategorie anlegen</source>
+            </trans-unit>
+            <trans-unit id="enable" xml:space="preserve">
+                <source>Aktivieren</source>
+            </trans-unit>
+            <trans-unit id="disable" xml:space="preserve">
+                <source>Deaktivieren</source>
+            </trans-unit>
+            <trans-unit id="delete" xml:space="preserve">
+                <source>Löschen</source>
+            </trans-unit>
+            <trans-unit id="deleteConfirm" xml:space="preserve">
+                <source>Kategorie "%s" wirklich löschen?</source>
+            </trans-unit>
+            <trans-unit id="moveUp" xml:space="preserve">
+                <source>Nach oben verschieben</source>
+            </trans-unit>
+            <trans-unit id="moveDown" xml:space="preserve">
+                <source>Nach unten verschieben</source>
+            </trans-unit>
+            <trans-unit id="localization" xml:space="preserve">
+                <source>Lokalisierung</source>
+            </trans-unit>
+            <trans-unit id="localizeTo" xml:space="preserve">
+                <source>Nach %s übersetzen</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

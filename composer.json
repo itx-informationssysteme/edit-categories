@@ -1,0 +1,26 @@
+{
+	"name": "itx/edit-categories",
+	"type": "typo3-cms-extension",
+	"description": "Dedicated backend module for browsing sys_category records as a tree, with language filter and record actions (edit, hide, delete, new subcategory).",
+	"version": "1.0.0",
+	"authors": [
+		{
+			"name": "it.x informationssysteme gmbh",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"typo3/cms-core": "^13.4",
+		"typo3/cms-backend": "^13.4"
+	},
+	"autoload": {
+		"psr-4": {
+			"Itx\\Categories\\": "Classes/"
+		}
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "edit_categories"
+		}
+	}
+}
