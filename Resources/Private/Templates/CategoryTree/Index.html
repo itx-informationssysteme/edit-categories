@@ -7,21 +7,32 @@
 	<f:section name="Content">
 		<div class="module" style="padding: 20px">
 			<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px">
-				<f:variable name="toggleUrl"
-					>{moduleUrl}{f:if(condition: showTranslations, then: '', else: '&showTranslations=1')}</f:variable
-				>
-				<a href="{toggleUrl}" class="btn btn-default">
-					<f:if condition="{showTranslations}">
-						<f:then
-							><f:translate
-								key="LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:hideTranslations"
-						/></f:then>
-						<f:else
-							><f:translate
-								key="LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:showTranslations"
-						/></f:else>
-					</f:if>
-				</a>
+				<div style="display: flex; gap: 8px">
+					<a href="{toggleTranslationsUrl}" class="btn btn-default">
+						<f:if condition="{showTranslations}">
+							<f:then
+								><f:translate
+									key="LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:hideTranslations"
+							/></f:then>
+							<f:else
+								><f:translate
+									key="LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:showTranslations"
+							/></f:else>
+						</f:if>
+					</a>
+					<a href="{toggleDisabledUrl}" class="btn btn-default">
+						<f:if condition="{showDisabled}">
+							<f:then
+								><f:translate
+									key="LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:hideDisabled"
+							/></f:then>
+							<f:else
+								><f:translate
+									key="LLL:EXT:edit_categories/Resources/Private/Language/locallang_mod_categorytree.xlf:showDisabled"
+							/></f:else>
+						</f:if>
+					</a>
+				</div>
 				<a href="{newRootLink}" class="btn btn-default">
 					<core:icon identifier="actions-add" size="small" />
 					<f:translate

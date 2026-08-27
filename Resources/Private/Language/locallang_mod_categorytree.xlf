@@ -18,6 +18,12 @@
             <trans-unit id="hideTranslations" xml:space="preserve">
                 <source>Übersetzungen ausblenden</source>
             </trans-unit>
+            <trans-unit id="showDisabled" xml:space="preserve">
+                <source>Deaktivierte anzeigen</source>
+            </trans-unit>
+            <trans-unit id="hideDisabled" xml:space="preserve">
+                <source>Deaktivierte ausblenden</source>
+            </trans-unit>
             <trans-unit id="newCategory" xml:space="preserve">
                 <source>Neue Kategorie</source>
             </trans-unit>
